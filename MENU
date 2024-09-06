@@ -1,0 +1,88 @@
+Proceso MenuPrincipal
+    Definir op, n1, n2, s, r , m, div, rest, a, b, primitiva, c, discriminante, x1, x2 Como real;
+    Definir a1, d, n, an, Sn Como Entero;
+    op = 0;
+    
+    Mientras op <> 4 Hacer
+        Escribir "===== MENÚ PRINCIPAL =====";
+        Escribir "1. Resolver una P.A";
+        Escribir "2. Integral";
+        Escribir "3. Raices Reales Ecuación cuadrática";
+        Escribir "4. Cerrar programa";
+        Escribir "Elige una opción: ";
+        Leer op;
+        
+        Segun op Hacer
+            Caso 1:
+                Escribir "Ingrese el primer término a1 (entero): ";
+                Leer a1;
+                Escribir "Ingrese la diferencia d (entero): ";
+                Leer d;
+                
+                Si d <> 0 Entonces
+                    Escribir "La expresión algebraica de la P.A. es: a_n = ", a1, " + (n - 1) * ", d;
+                    Repetir
+                        Escribir "Ingrese el número de términos n (mayor que 3): ";
+                        Leer n;
+                    Hasta Que n > 3  
+                    an <- a1 + (n - 1) * d;
+                    Sn <- (n * (a1 + an)) / 2;
+                    
+                    Escribir "El término a_n es: ", an;
+                    Escribir "La suma S_n de los primeros ", n, " términos es: ", Sn;
+                SiNo
+                    Escribir "La diferencia d debe ser un número entero no nulo.";
+                FinSi
+                
+            Caso 2:
+                Repetir
+                    Escribir "Ingresa el valor de a (distinto de 2): ";    
+                    Leer a;
+                    Escribir "Ingresa el valor de b (b > a y distinto de 2): ";
+                    Leer b;
+                    Si b <= a Entonces
+                        Escribir "Error: b debe ser mayor que a.";
+                    FinSi
+                    Si a = 2 O b = 2 Entonces
+                        Escribir "Error: Los valores de a y b no pueden ser 2, debido al dominio de la función.";
+                    FinSi
+                Hasta Que b > a Y a <> 2 Y b <> 2
+                
+                primitiva = ln(abs(b - 2)) - ln(abs(a - 2));
+                
+                Escribir "El valor de la integral es: ", primitiva;
+                
+            Caso 3:
+                Repetir
+                    Escribir "Ingresa el valor de a (distinto de 0): ";
+                    Leer a;
+                Hasta Que a <> 0
+                
+                Escribir "Ingresa el valor de b: ";
+                Leer b;
+                Escribir "Ingresa el valor de c: ";
+                Leer c;
+                
+                discriminante = b^2 - 4*a*c;
+                
+                Si discriminante < 0 Entonces
+                    Escribir "Las raices no pertenecen a R";
+                Sino
+                    x1 = (-b + raiz(discriminante)) / (2*a);
+                    x2 = (-b - raiz(discriminante)) / (2*a);
+					Escribir "el discriminante es; ", discriminante;
+                    Escribir "La primera raíz es: ", x1;
+                    Escribir "La segunda raíz es: ", x2;
+                FinSi
+				
+            Caso 4:
+                Escribir "Cerrando programa...";
+                op = 4; // Esto asegura que el programa termine correctamente
+                
+            De Otro Modo:
+                Escribir "Opción no válida, por favor elige una opción entre 1 y 4.";
+        FinSegun
+    FinMientras
+    
+    Escribir "Programa terminado.";
+FinProceso
